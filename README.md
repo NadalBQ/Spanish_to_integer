@@ -1,2 +1,4 @@
-# Spanish_to_integer
-A converter from natural language to integers in Spanish.
+# Text to integer
+## Example (in spanish):
+<p>Cuatrocientos veinticinco -> 425</p>
+<p>Tres mil doscientos millones ochocientos cincuenta y seis -> 3.200.000.856</p>
