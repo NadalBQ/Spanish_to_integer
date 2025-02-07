@@ -1,29 +1,33 @@
 
-number_set = {"uno", "un", "ún", "dos", "tres", "cuatro", "cinco", "seis", "siete", "sete", "ocho", "nueve", "nove", "diez", "diec", "once", "doce", "trece", "catorce", "quince", "veinte", "veint", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa", "cien", "quinien", "mil"}
+number_set = {"uno": 1, "un": 1, "ún": 1, "dos": 2, "tres": 3, "cuatro": 4, "cinco": 5, "seis": 6, "siete": 7, "sete": 7, "ocho": 8, "nueve": 9, "nove": 9, "diez": 10, "diec": 10, "once": 11, "doce": 12, "trece": 13, "catorce": 14, "quince": 15, "veinte": 20, "veint": 20, "treinta": 30, "cuarenta": 40, "cincuenta": 50, "sesenta": 60, "setenta": 70, "ochenta": 80, "noventa": 90, "cien": 100, "quinien": 500, "mil": 1000}
 sumadores = {"y", "i", "to", "tos", "es"}
 unidades = {"uno", "un", "dos", "tres", "cuatro", "cinco", "seis", "siete", "sete", "ocho", "nueve", "nove"}
 decenas = {"diez", "diec", "once", "doce", "trece", "catorce", "quince", "veinte", "veint", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"}
 centenas = {"cien", "quinien"}
 millares = {"mil", "millón", "millon", "billón", "billon", "trillón", "trillon", "cuatrillón", "cuatrillon", "quintillón", "quintillón", "sextillón", "sextillon", "septillón", "septillon"}
 
-def suma(num1:int, num2:int, millar: str) -> int:
-    respuesta = num1 + num2
+def sumar(*args) -> int:
+    respuesta = sum(args)
+    return respuesta
+
+
+def multiplica_millar(num, millar):
     if millar == "mil":
-        return respuesta * 10**3
+        return num * 10**3
     if millar == "millon":
-        return respuesta * 10**6
+        return num * 10**6
     if millar == "billon":
-        return respuesta * 10**12
+        return num * 10**12
     if millar == "trillon":
-        return respuesta * 10**18
+        return num * 10**18
     if millar == "cuatrillon":
-        return respuesta * 10**24
+        return num * 10**24
     if millar == "quintillon":
-        return respuesta * 10**30
+        return num * 10**30
     if millar == "sextillon":
-        return respuesta * 10**36
+        return num * 10**36
     if millar == "septillon":
-        return respuesta * 10**42
+        return num * 10**42
 
 
 def string_to_int(string:str) -> int:
@@ -31,13 +35,12 @@ def string_to_int(string:str) -> int:
 
 
     
-    # comprobar unidades
-
-    # comprobar decenas
-
-    # comprobar centenas
-
+    # comprobar unidades, decenas y centenas
+    if string in unidades or string in decenas or string in centenas:
+        return number_set[string]
+    
     # comprobar millares
+    
 
     pass
 
@@ -45,6 +48,9 @@ def string_to_int(string:str) -> int:
 def find_number_name(string:str = "Dos") -> int:
     string = string.lower()
     numeros = string.split(" ")
+    numeros = numeros[::-1]
+    suma = 0
     for numero in numeros:
         num = string_to_int(numero)
+        suma += sumar(suma, num)
     
